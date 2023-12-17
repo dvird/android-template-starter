@@ -13,7 +13,6 @@ In this project you'll find:
 ## Screenshots
 
 <img src="screenshots/screenshots.png" alt="Screenshot">
-<img src="screenshots/project.png" alt="Screenshot">
 
 ## Why a to-do app?
 
