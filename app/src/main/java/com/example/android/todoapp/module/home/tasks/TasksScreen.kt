@@ -1,5 +1,3 @@
-
-
 package com.example.android.todoapp.module.home.tasks
 
 import androidx.annotation.DrawableRes
@@ -42,11 +40,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.android.todoapp.R
 import com.example.android.todoapp.data.task.Task
+import com.example.android.todoapp.module.home.TasksTopAppBar
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.ACTIVE_TASKS
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.ALL_TASKS
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.COMPLETED_TASKS
 import com.example.android.todoapp.support.util.LoadingContent
-import com.example.android.todoapp.module.home.TasksTopAppBar
 import com.google.accompanist.themeadapter.appcompat.AppCompatTheme
 
 
@@ -61,25 +59,18 @@ fun TasksScreen(
     viewModel: TasksViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
-    Scaffold(
-        scaffoldState = scaffoldState,
-        topBar = {
-            TasksTopAppBar(
-                openDrawer = openDrawer,
-                onFilterAllTasks = { viewModel.setFiltering(ALL_TASKS) },
-                onFilterActiveTasks = { viewModel.setFiltering(ACTIVE_TASKS) },
-                onFilterCompletedTasks = { viewModel.setFiltering(COMPLETED_TASKS) },
-                onClearCompletedTasks = { viewModel.clearCompletedTasks() },
-                onRefresh = { viewModel.refresh() }
-            )
-        },
-        modifier = modifier.fillMaxSize(),
-        floatingActionButton = {
-            FloatingActionButton(onClick = onAddTask) {
-                Icon(Icons.Filled.Add, stringResource(id = R.string.add_task))
-            }
+    Scaffold(scaffoldState = scaffoldState, topBar = {
+        TasksTopAppBar(openDrawer = openDrawer,
+            onFilterAllTasks = { viewModel.setFiltering(ALL_TASKS) },
+            onFilterActiveTasks = { viewModel.setFiltering(ACTIVE_TASKS) },
+            onFilterCompletedTasks = { viewModel.setFiltering(COMPLETED_TASKS) },
+            onClearCompletedTasks = { viewModel.clearCompletedTasks() },
+            onRefresh = { viewModel.refresh() })
+    }, modifier = modifier.fillMaxSize(), floatingActionButton = {
+        FloatingActionButton(onClick = onAddTask) {
+            Icon(Icons.Filled.Add, stringResource(id = R.string.add_task))
         }
-    ) { paddingValues ->
+    }) { paddingValues ->
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
         TasksContent(
@@ -138,20 +129,16 @@ private fun TasksContent(
                 .padding(horizontal = dimensionResource(id = R.dimen.horizontal_margin))
         ) {
             Text(
-                text = stringResource(currentFilteringLabel),
-                modifier = Modifier.padding(
+                text = stringResource(currentFilteringLabel), modifier = Modifier.padding(
                     horizontal = dimensionResource(id = R.dimen.list_item_padding),
                     vertical = dimensionResource(id = R.dimen.vertical_margin)
-                ),
-                style = MaterialTheme.typography.h6
+                ), style = MaterialTheme.typography.h6
             )
             LazyColumn {
                 items(tasks) { task ->
-                    TaskItem(
-                        task = task,
+                    TaskItem(task = task,
                         onTaskClick = onTaskClick,
-                        onCheckedChange = { onTaskCheckedChange(task, it) }
-                    )
+                        onCheckedChange = { onTaskCheckedChange(task, it) })
                 }
             }
         }
@@ -160,23 +147,17 @@ private fun TasksContent(
 
 @Composable
 private fun TaskItem(
-    task: Task,
-    onCheckedChange: (Boolean) -> Unit,
-    onTaskClick: (Task) -> Unit
+    task: Task, onCheckedChange: (Boolean) -> Unit, onTaskClick: (Task) -> Unit
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                horizontal = dimensionResource(id = R.dimen.horizontal_margin),
-                vertical = dimensionResource(id = R.dimen.list_item_padding),
-            )
-            .clickable { onTaskClick(task) }
-    ) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier
+        .fillMaxWidth()
+        .padding(
+            horizontal = dimensionResource(id = R.dimen.horizontal_margin),
+            vertical = dimensionResource(id = R.dimen.list_item_padding),
+        )
+        .clickable { onTaskClick(task) }) {
         Checkbox(
-            checked = task.isCompleted,
-            onCheckedChange = onCheckedChange
+            checked = task.isCompleted, onCheckedChange = onCheckedChange
         )
         Text(
             text = task.titleForList,
@@ -195,9 +176,7 @@ private fun TaskItem(
 
 @Composable
 private fun TasksEmptyContent(
-    @StringRes noTasksLabel: Int,
-    @DrawableRes noTasksIconRes: Int,
-    modifier: Modifier = Modifier
+    @StringRes noTasksLabel: Int, @DrawableRes noTasksIconRes: Int, modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -288,8 +267,7 @@ private fun TasksEmptyContentPreview() {
     AppCompatTheme {
         Surface {
             TasksEmptyContent(
-                noTasksLabel = R.string.no_tasks_all,
-                noTasksIconRes = R.drawable.logo_no_fill
+                noTasksLabel = R.string.no_tasks_all, noTasksIconRes = R.drawable.logo_no_fill
             )
         }
     }
@@ -300,15 +278,9 @@ private fun TasksEmptyContentPreview() {
 private fun TaskItemPreview() {
     AppCompatTheme {
         Surface {
-            TaskItem(
-                task = Task(
-                    title = "Title",
-                    description = "Description",
-                    id = "ID"
-                ),
-                onTaskClick = { },
-                onCheckedChange = { }
-            )
+            TaskItem(task = Task(
+                title = "Title", description = "Description", id = "ID"
+            ), onTaskClick = { }, onCheckedChange = { })
         }
     }
 }
@@ -318,16 +290,9 @@ private fun TaskItemPreview() {
 private fun TaskItemCompletedPreview() {
     AppCompatTheme {
         Surface {
-            TaskItem(
-                task = Task(
-                    title = "Title",
-                    description = "Description",
-                    isCompleted = true,
-                    id = "ID"
-                ),
-                onTaskClick = { },
-                onCheckedChange = { }
-            )
+            TaskItem(task = Task(
+                title = "Title", description = "Description", isCompleted = true, id = "ID"
+            ), onTaskClick = { }, onCheckedChange = { })
         }
     }
 }

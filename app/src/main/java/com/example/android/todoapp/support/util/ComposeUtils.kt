@@ -1,5 +1,3 @@
-
-
 package com.example.android.todoapp.support.util
 
 import androidx.compose.runtime.Composable

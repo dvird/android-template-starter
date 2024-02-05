@@ -1,5 +1,3 @@
-
-
 package com.example.android.todoapp.module.home.statistics
 
 import androidx.compose.foundation.layout.Column
@@ -22,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.android.todoapp.R
-import com.example.android.todoapp.support.util.LoadingContent
 import com.example.android.todoapp.module.home.StatisticsTopAppBar
+import com.example.android.todoapp.support.util.LoadingContent
 import com.google.accompanist.themeadapter.appcompat.AppCompatTheme
 
 
@@ -34,10 +32,8 @@ fun StatisticsScreen(
     viewModel: StatisticsViewModel = hiltViewModel(),
     scaffoldState: ScaffoldState = rememberScaffoldState()
 ) {
-    Scaffold(
-        scaffoldState = scaffoldState,
-        topBar = { StatisticsTopAppBar(openDrawer) }
-    ) { paddingValues ->
+    Scaffold(scaffoldState = scaffoldState,
+        topBar = { StatisticsTopAppBar(openDrawer) }) { paddingValues ->
         val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
         StatisticsContent(
@@ -64,18 +60,15 @@ private fun StatisticsContent(
         .fillMaxWidth()
         .padding(all = dimensionResource(id = R.dimen.horizontal_margin))
 
-    LoadingContent(
-        loading = loading,
+    LoadingContent(loading = loading,
         empty = empty,
         onRefresh = onRefresh,
         modifier = modifier,
         emptyContent = {
             Text(
-                text = stringResource(id = R.string.statistics_no_tasks),
-                modifier = commonModifier
+                text = stringResource(id = R.string.statistics_no_tasks), modifier = commonModifier
             )
-        }
-    ) {
+        }) {
         Column(
             commonModifier
                 .fillMaxSize()
@@ -85,8 +78,7 @@ private fun StatisticsContent(
                 Text(stringResource(id = R.string.statistics_active_tasks, activeTasksPercent))
                 Text(
                     stringResource(
-                        id = R.string.statistics_completed_tasks,
-                        completedTasksPercent
+                        id = R.string.statistics_completed_tasks, completedTasksPercent
                     )
                 )
             }
@@ -99,13 +91,11 @@ private fun StatisticsContent(
 fun StatisticsContentPreview() {
     AppCompatTheme {
         Surface {
-            StatisticsContent(
-                loading = false,
+            StatisticsContent(loading = false,
                 empty = false,
                 activeTasksPercent = 80f,
                 completedTasksPercent = 20f,
-                onRefresh = { }
-            )
+                onRefresh = { })
         }
     }
 }
@@ -115,13 +105,11 @@ fun StatisticsContentPreview() {
 fun StatisticsContentEmptyPreview() {
     AppCompatTheme {
         Surface {
-            StatisticsContent(
-                loading = false,
+            StatisticsContent(loading = false,
                 empty = true,
                 activeTasksPercent = 0f,
                 completedTasksPercent = 0f,
-                onRefresh = { }
-            )
+                onRefresh = { })
         }
     }
 }

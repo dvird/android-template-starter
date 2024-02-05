@@ -10,7 +10,6 @@ import com.example.android.todoapp.data.user.source.local.LocalUser
 
 /**
  * The Room Database that contains the Task table.
- *
  * Note that exportSchema should be true in production databases.
  */
 @Database(entities = [LocalTask::class, LocalUser::class], version = 1, exportSchema = false)

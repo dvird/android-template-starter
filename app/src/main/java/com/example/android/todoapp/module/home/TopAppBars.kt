@@ -1,5 +1,3 @@
-
-
 package com.example.android.todoapp.module.home
 
 import androidx.annotation.StringRes
@@ -41,18 +39,14 @@ fun TasksTopAppBar(
     onClearCompletedTasks: () -> Unit,
     onRefresh: () -> Unit
 ) {
-    TopAppBar(
-        title = { Text(text = stringResource(id = R.string.app_name)) },
-        navigationIcon = {
-            IconButton(onClick = openDrawer) {
-                Icon(Icons.Filled.Menu, stringResource(id = R.string.open_drawer))
-            }
-        },
-        actions = {
-            FilterTasksMenu(onFilterAllTasks, onFilterActiveTasks, onFilterCompletedTasks)
-            MoreTasksMenu(onClearCompletedTasks, onRefresh)
-        },
-        modifier = Modifier.fillMaxWidth()
+    TopAppBar(title = { Text(text = stringResource(id = R.string.app_name)) }, navigationIcon = {
+        IconButton(onClick = openDrawer) {
+            Icon(Icons.Filled.Menu, stringResource(id = R.string.open_drawer))
+        }
+    }, actions = {
+        FilterTasksMenu(onFilterAllTasks, onFilterActiveTasks, onFilterCompletedTasks)
+        MoreTasksMenu(onClearCompletedTasks, onRefresh)
+    }, modifier = Modifier.fillMaxWidth()
     )
 }
 
@@ -62,14 +56,12 @@ private fun FilterTasksMenu(
     onFilterActiveTasks: () -> Unit,
     onFilterCompletedTasks: () -> Unit
 ) {
-    TopAppBarDropdownMenu(
-        iconContent = {
-            Icon(
-                painterResource(id = R.drawable.ic_filter_list),
-                stringResource(id = R.string.menu_filter)
-            )
-        }
-    ) { closeMenu ->
+    TopAppBarDropdownMenu(iconContent = {
+        Icon(
+            painterResource(id = R.drawable.ic_filter_list),
+            stringResource(id = R.string.menu_filter)
+        )
+    }) { closeMenu ->
         DropdownMenuItem(onClick = { onFilterAllTasks(); closeMenu() }) {
             Text(text = stringResource(id = R.string.nav_all))
         }
@@ -84,14 +76,11 @@ private fun FilterTasksMenu(
 
 @Composable
 private fun MoreTasksMenu(
-    onClearCompletedTasks: () -> Unit,
-    onRefresh: () -> Unit
+    onClearCompletedTasks: () -> Unit, onRefresh: () -> Unit
 ) {
-    TopAppBarDropdownMenu(
-        iconContent = {
-            Icon(Icons.Filled.MoreVert, stringResource(id = R.string.menu_more))
-        }
-    ) { closeMenu ->
+    TopAppBarDropdownMenu(iconContent = {
+        Icon(Icons.Filled.MoreVert, stringResource(id = R.string.menu_more))
+    }) { closeMenu ->
         DropdownMenuItem(onClick = { onClearCompletedTasks(); closeMenu() }) {
             Text(text = stringResource(id = R.string.menu_clear))
         }
@@ -103,8 +92,7 @@ private fun MoreTasksMenu(
 
 @Composable
 private fun TopAppBarDropdownMenu(
-    iconContent: @Composable () -> Unit,
-    content: @Composable ColumnScope.(() -> Unit) -> Unit
+    iconContent: @Composable () -> Unit, content: @Composable ColumnScope.(() -> Unit) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -124,8 +112,7 @@ private fun TopAppBarDropdownMenu(
 
 @Composable
 fun StatisticsTopAppBar(openDrawer: () -> Unit) {
-    TopAppBar(
-        title = { Text(text = stringResource(id = R.string.statistics_title)) },
+    TopAppBar(title = { Text(text = stringResource(id = R.string.statistics_title)) },
         navigationIcon = {
             IconButton(onClick = openDrawer) {
                 Icon(Icons.Filled.Menu, stringResource(id = R.string.open_drawer))
@@ -137,36 +124,29 @@ fun StatisticsTopAppBar(openDrawer: () -> Unit) {
 
 @Composable
 fun TaskDetailTopAppBar(onBack: () -> Unit, onDelete: () -> Unit) {
-    TopAppBar(
-        title = {
-            Text(text = stringResource(id = R.string.task_details))
-        },
-        navigationIcon = {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.menu_back))
-            }
-        },
-        actions = {
-            IconButton(onClick = onDelete) {
-                Icon(Icons.Filled.Delete, stringResource(id = R.string.menu_delete_task))
-            }
-        },
-        modifier = Modifier.fillMaxWidth()
+    TopAppBar(title = {
+        Text(text = stringResource(id = R.string.task_details))
+    }, navigationIcon = {
+        IconButton(onClick = onBack) {
+            Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.menu_back))
+        }
+    }, actions = {
+        IconButton(onClick = onDelete) {
+            Icon(Icons.Filled.Delete, stringResource(id = R.string.menu_delete_task))
+        }
+    }, modifier = Modifier.fillMaxWidth()
     )
 }
 
 @Composable
 fun AddEditTaskTopAppBar(@StringRes title: Int, onBack: (() -> Unit)?) {
-    TopAppBar(
-        title = { Text(text = stringResource(title)) },
-        navigationIcon = {
-            if (onBack != null) {
-                IconButton(onClick = onBack) {
-                    Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.menu_back))
-                }
+    TopAppBar(title = { Text(text = stringResource(title)) }, navigationIcon = {
+        if (onBack != null) {
+            IconButton(onClick = onBack) {
+                Icon(Icons.Filled.ArrowBack, stringResource(id = R.string.menu_back))
             }
-        },
-        modifier = Modifier.fillMaxWidth()
+        }
+    }, modifier = Modifier.fillMaxWidth()
     )
 }
 
