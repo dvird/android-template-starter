@@ -1,5 +1,3 @@
-
-
 package com.example.android.todoapp.module.home.tasks
 
 import androidx.lifecycle.SavedStateHandle
@@ -66,9 +64,11 @@ class TasksViewModel @Inject constructor(
             Async.Loading -> {
                 TasksUiState(isLoading = true)
             }
+
             is Async.Error -> {
                 TasksUiState(userMessage = tasksAsync.errorMessage)
             }
+
             is Async.Success -> {
                 TasksUiState(
                     items = tasksAsync.data,
@@ -78,12 +78,11 @@ class TasksViewModel @Inject constructor(
                 )
             }
         }
-    }
-        .stateIn(
-            scope = viewModelScope,
-            started = WhileUiSubscribed,
-            initialValue = TasksUiState(isLoading = true)
-        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = WhileUiSubscribed,
+        initialValue = TasksUiState(isLoading = true)
+    )
 
     fun setFiltering(requestType: TasksFilterType) {
         savedStateHandle[TASKS_FILTER_SAVED_STATE_KEY] = requestType
@@ -140,6 +139,7 @@ class TasksViewModel @Inject constructor(
                 ACTIVE_TASKS -> if (task.isActive) {
                     tasksToShow.add(task)
                 }
+
                 COMPLETED_TASKS -> if (task.isCompleted) {
                     tasksToShow.add(task)
                 }
@@ -156,12 +156,14 @@ class TasksViewModel @Inject constructor(
                     R.drawable.logo_no_fill
                 )
             }
+
             ACTIVE_TASKS -> {
                 FilteringUiInfo(
                     R.string.label_active, R.string.no_tasks_active,
                     R.drawable.ic_check_circle_96dp
                 )
             }
+
             COMPLETED_TASKS -> {
                 FilteringUiInfo(
                     R.string.label_completed, R.string.no_tasks_completed,

@@ -21,7 +21,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.android.todoapp.R
 import com.example.android.todoapp.module.home.StatisticsTopAppBar
-import com.example.android.todoapp.support.util.LoadingContent
+import com.example.android.todoapp.support.compose.LoadingContent
 import com.google.accompanist.themeadapter.appcompat.AppCompatTheme
 
 

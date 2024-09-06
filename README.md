@@ -1,34 +1,195 @@
+![Header Screenshot](screenshots/HEADER.png)
+
 # Android Architecture Template Starter
 
-In this project you'll find:
-*   User Interface built with **[Jetpack Compose](https://developer.android.com/jetpack/compose)** 
-*   A single-activity architecture, using **[Navigation Compose](https://developer.android.com/jetpack/compose/navigation)**.
-*   A presentation layer that contains a Compose screen (View) and a **ViewModel** per screen (or feature).
-*   Reactive UIs using **[Flow](https://developer.android.com/kotlin/flow)** and **[coroutines](https://kotlinlang.org/docs/coroutines-overview.html)** for asynchronous operations.
-*   A **data layer** with a repository and two data sources (local using Room and a fake remote).
-*   Two **product flavors**, `mock` and `prod`, [to ease development and testing](https://android-developers.googleblog.com/2015/12/leveraging-product-flavors-in-android.html).
-*   A collection of unit, integration and e2e **tests**, including "shared" tests that can be run on emulator/device.
-*   Dependency injection using [Hilt](https://developer.android.com/training/dependency-injection/hilt-android).
+A robust and scalable Android project template designed to kickstart your app development with best practices and modern architecture components.
+
+## Table of Contents
+
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Why This Template?](#why-this-template)
+- [Who Is It For?](#who-is-it-for)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+This template incorporates a comprehensive set of modern Android development tools and architectural patterns to ensure your project is maintainable, testable, and scalable.
+
+- **Jetpack Compose**: Build expressive and flexible UIs with Jetpack Compose.
+- **Reactive Programming**: Implement reactive UIs using Kotlin Flow and Coroutines for efficient asynchronous operations.
+-----------
+- **Single-Activity Architecture**: Utilize a single-activity setup with Navigation Compose for seamless navigation.
+- **MVVM Pattern**: Separate concerns with a clear ViewModel for each screen or feature.
+- **Data Layer**:
+  - **Repository Pattern**: Abstract data sources with a repository.
+  - **Local Data Source**: Persist data locally using Room.
+  - **Remote Data Source**: Simulate remote data interactions with a fake remote source.
+- **Product Flavors**:
+  - **mock**: Ideal for development and testing with mock data.
+  - **prod**: Production-ready configuration.
+  - [Learn more about product flavors](https://android-developers.googleblog.com/2015/12/leveraging-product-flavors-in-android.html).
+- **Dependency Injection**: Manage dependencies effortlessly with Hilt.
+-----------
+- **Authentication Service**: Integrated authentication mechanism to manage user sign-in and sign-up processes securely.
+- **Notification Service**: Implement push and local notifications to keep users engaged and informed.
+- **Logging with Timber**: Utilize Timber for efficient and manageable logging throughout the application.
+- **Comprehensive Testing**:
+  - **Unit Tests**: Validate individual components.
+  - **Integration Tests**: Ensure modules work together seamlessly.
+  - **End-to-End (E2E) Tests**: Test the complete flow on emulators or devices.
+  - **Shared Tests**: Reusable test cases across different environments.
 
 ## Screenshots
 
-<img src="screenshots/screenshots.png" alt="Screenshot">
+![App Screenshots](screenshots/screenshots.png)
 
-## Why a to-do app?
+## Why This Template?
 
-The app in this project aims to be simple enough that you can understand it quickly, but complex enough to showcase difficult design decisions and testing scenarios. For more information, see the [app's specification](https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification).
+This template is designed to strike a balance between simplicity and complexity. It’s straightforward enough for quick understanding and easy to navigate, yet robust enough to demonstrate advanced architectural decisions and comprehensive testing strategies.
 
-## Who is it for?
+## Who Is It For?
 
-*   Intermediate developers and beginners looking for a way to structure their app in a testable and maintainable way.
-*   Advanced developers looking for quick reference.
+- **Beginner to Intermediate Developers**: Looking for a solid foundation to structure their Android apps in a maintainable and testable manner.
+- **Advanced Developers**: Seeking a reference for best practices and modern architectural patterns in Android development.
+- **Teams**: Needing a standardized template to ensure consistency and quality across projects.
 
-## Opening a sample in Android Studio
+## Getting Started
 
-To open one of the samples in Android Studio, begin by checking out, and then open the root directory in Android Studio.
+### Prerequisites
 
-Clone the repository:
+- **Android Studio**: [Latest version](https://developer.android.com/studio) recommended.
+- **Git**: Ensure Git is installed on your machine. [Download Git](https://git-scm.com/downloads).
+- **Java Development Kit (JDK)**: Version 11 or higher. [Download JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+
+### Installation
+
+1. **Clone the Repository**
+
+    ```bash
+    git clone git@github.com:dvird/android-template-starter.git
+    ```
+
+2. **Open in Android Studio**
+
+    - Launch Android Studio.
+    - Select **Open an existing project**.
+    - Navigate to the cloned repository's root directory and open it.
+
+3. **Sync and Build**
+
+    - Allow Android Studio to sync the project and download all necessary dependencies.
+    - Once synced, build the project to ensure everything is set up correctly.
+
+4. **Run the App**
+
+    - Select your preferred emulator or connected device.
+    - Click the **Run** button to launch the app.
+
+## Project Structure
+
+```bash
+android-template-starter/
+todoapp/
+
+  ├── data/
+  │   ├── task/
+  │   ├── user/
+  │   └── AppDatabase.kt
+  ├── domain/
+  │   ├── task/
+  │   ├── user/
+  │   └── THIS_MODULE_IS_OPTIONAL.md
+  ├── module/
+  │   ├── home/
+  │   ├── intro/
+  │   └── splash/
+  ├── navigation/
+  │   ├── home/
+  │   ├── intro/
+  │   ├── splash/
+  │   ├── MainNavController.kt
+  │   ├── MainNavGraph.kt
+  │   └── MainNavigation.kt
+  ├── service/
+  │   ├── auth/
+  │   └── notification/
+  ├── support/
+  │   ├── di/
+  │   └── util/
+  ├── Async.kt
+  └── TodoApplication.kt
 
 ```
-git clone git@github.com:dvird/android-template-starter.git
-```
+
+- **app/**: Contains the main application code, including different product flavors.
+- **data/**: Manages data sources and repositories.
+- **domain/**: Defines business models and use cases.
+- **presentation/**: Handles UI components and ViewModels.
+- **di/**: Contains dependency injection modules.
+- **tests/**: Organizes various testing layers.
+
+## Testing
+
+This template emphasizes a strong testing strategy to ensure code reliability and quality.
+
+- **Unit Tests**: Located in `tests/unit/`, these tests cover individual components and logic.
+- **Integration Tests**: Found in `tests/integration/`, these tests verify interactions between modules.
+- **End-to-End (E2E) Tests**: Reside in `tests/e2e/`, simulating real user scenarios on emulators or devices.
+- **Shared Tests**: Reusable test cases that can be executed across different environments and configurations.
+
+### To Run Tests
+
+- **Unit and Integration Tests**
+
+    ```bash
+    ./gradlew test
+    ```
+
+- **E2E Tests**
+
+    ```bash
+    ./gradlew connectedAndroidTest
+    ```
+
+## Contributing
+
+Contributions are welcome! Whether it's reporting issues, suggesting features, or submitting pull requests, your input helps improve this template.
+
+1. **Fork the Repository**
+
+2. **Create a Feature Branch**
+
+    ```bash
+    git checkout -b feature/YourFeature
+    ```
+
+3. **Commit Your Changes**
+
+    ```bash
+    git commit -m "Add your message"
+    ```
+
+4. **Push to the Branch**
+
+    ```bash
+    git push origin feature/YourFeature
+    ```
+
+5. **Open a Pull Request**
+
+Please ensure your contributions adhere to the project's coding standards and include relevant tests.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+**Happy Coding!**

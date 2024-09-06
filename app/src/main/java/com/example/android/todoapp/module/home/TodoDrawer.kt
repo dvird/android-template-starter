@@ -24,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -33,10 +34,11 @@ import androidx.compose.ui.unit.dp
 import com.example.android.todoapp.R
 import com.example.android.todoapp.navigation.TodoDestinations
 import com.example.android.todoapp.navigation.TodoNavigationActions
-import com.example.android.todoapp.support.util.primaryDarkColor
 import com.google.accompanist.themeadapter.appcompat.AppCompatTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+
+val primaryDarkColor: Color = Color(0xFF263238)
 
 @Composable
 fun AppModalDrawer(
