@@ -22,6 +22,8 @@ data class LoginUiState(
     val username: String = "",
     val password: String = "",
     val userMessage: Int? = null,
+    val isLoading: Boolean = false,
+    val isLoggedIn: Boolean = false,
 )
 
 /**

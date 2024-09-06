@@ -44,7 +44,7 @@ import com.example.android.todoapp.module.home.TasksTopAppBar
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.ACTIVE_TASKS
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.ALL_TASKS
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.COMPLETED_TASKS
-import com.example.android.todoapp.support.util.LoadingContent
+import com.example.android.todoapp.support.compose.LoadingContent
 import com.google.accompanist.themeadapter.appcompat.AppCompatTheme
 
 
