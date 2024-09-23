@@ -13,7 +13,7 @@ import com.example.android.todoapp.module.home.tasks.TasksFilterType.ACTIVE_TASK
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.ALL_TASKS
 import com.example.android.todoapp.module.home.tasks.TasksFilterType.COMPLETED_TASKS
 import com.example.android.todoapp.support.Async
-import com.example.android.todoapp.support.util.WhileUiSubscribed
+import com.example.android.todoapp.support.coroutines.WhileUiSubscribed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow

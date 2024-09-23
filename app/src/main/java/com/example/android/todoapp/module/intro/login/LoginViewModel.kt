@@ -64,15 +64,15 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun updateUsername(newTitle: String) {
+    fun updateUsername(username: String) {
         _uiState.update {
-            it.copy(username = newTitle)
+            it.copy(username = username)
         }
     }
 
-    fun updatePassword(newDescription: String) {
+    fun updatePassword(password: String) {
         _uiState.update {
-            it.copy(password = newDescription)
+            it.copy(password = password)
         }
     }
 }

@@ -1,6 +1,7 @@
 # Domain Package in Android Development
 
-The "domain package" in Android development typically refers to a part of the application architecture, especially in the context of Clean Architecture or similar design patterns. In these architectures, the domain layer (or domain package) is responsible for containing the business logic of the application. It's a central layer that dictates how the application should behave in terms of its core functionality, independent of the user interface or data sources.
+The "domain package" in Android development typically refers to a part of the application architecture, especially in the context of Clean Architecture or similar design patterns. In these architectures, the domain layer (or domain package) is responsible for containing the business logic of the application. 
+It's a central layer that dictates how the application should behave in terms of its core functionality, independent of the user interface or data sources.
 
 ## Key Aspects of the Domain Package in Android
 

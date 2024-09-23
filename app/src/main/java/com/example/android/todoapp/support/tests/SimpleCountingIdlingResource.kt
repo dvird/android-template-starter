@@ -1,6 +1,6 @@
 
 
-package com.example.android.todoapp.support.util
+package com.example.android.todoapp.support.tests
 
 import androidx.test.espresso.IdlingResource
 import java.util.concurrent.atomic.AtomicInteger

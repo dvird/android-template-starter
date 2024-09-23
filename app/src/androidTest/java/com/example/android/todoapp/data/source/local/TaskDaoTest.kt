@@ -7,7 +7,7 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.android.todoapp.data.task.source.local.LocalTask
-import com.example.android.todoapp.data.AppDatabase
+import com.example.android.todoapp.data.common.AppDatabase
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi

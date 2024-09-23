@@ -8,7 +8,7 @@ import com.example.android.todoapp.R
 import com.example.android.todoapp.data.task.Task
 import com.example.android.todoapp.data.task.TaskRepository
 import com.example.android.todoapp.support.Async
-import com.example.android.todoapp.support.util.WhileUiSubscribed
+import com.example.android.todoapp.support.coroutines.WhileUiSubscribed
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.flow.StateFlow
