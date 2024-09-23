@@ -128,16 +128,32 @@ dependencies {
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.material.core)
+    implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
     implementation(libs.accompanist.appcompat.theme)
     implementation(libs.accompanist.swiperefresh)
+    implementation(libs.androidx.startup)
+
+
+    // ============================
+    //      DEBUG DEPENDENCIES
+    // ============================
 
     debugImplementation(composeBom)
     debugImplementation(libs.androidx.compose.ui.tooling.core)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // ============================
+    //      TEST DEPENDENCIES
+    // ============================
+    // These dependencies are required for unit and instrumented testing in the project.
+    // They cover essential libraries for handling architecture, UI components, coroutines,
+    // Hilt dependency injection, and Compose UI tests.
+    // Ensure all dependencies are compatible with the project's configuration and other libraries.
+
 
     // JVM tests - Hilt
     testImplementation(libs.hilt.android.testing)

@@ -144,7 +144,6 @@ This template emphasizes a strong testing strategy to ensure code reliability an
 - **Unit Tests**: Located in `tests/unit/`, these tests cover individual components and logic.
 - **Integration Tests**: Found in `tests/integration/`, these tests verify interactions between modules.
 - **End-to-End (E2E) Tests**: Reside in `tests/e2e/`, simulating real user scenarios on emulators or devices.
-- **Shared Tests**: Reusable test cases that can be executed across different environments and configurations.
 
 ### To Run Tests
 

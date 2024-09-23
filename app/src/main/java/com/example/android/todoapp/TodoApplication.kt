@@ -3,6 +3,8 @@
 package com.example.android.todoapp
 
 import android.app.Application
+import androidx.startup.AppInitializer
+import com.example.android.todoapp.service.appinitializer.LoggerInitializer
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -16,6 +18,11 @@ class TodoApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        if (BuildConfig.DEBUG) Timber.plant(DebugTree())
+
+        AppInitializer.getInstance(applicationContext)
+            .initializeComponent(LoggerInitializer::class.java)
+            //.initializeComponent(LoggerInitializer::class.java)
+            //.initializeComponent(LoggerInitializer::class.java)
+
     }
 }

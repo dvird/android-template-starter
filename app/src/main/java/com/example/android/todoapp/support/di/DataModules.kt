@@ -4,7 +4,7 @@ package com.example.android.todoapp.support.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.android.todoapp.data.AppDatabase
+import com.example.android.todoapp.data.common.AppDatabase
 import com.example.android.todoapp.data.task.DefaultTaskRepository
 import com.example.android.todoapp.data.task.TaskRepository
 import com.example.android.todoapp.data.task.source.local.TaskDao

@@ -1,6 +1,6 @@
 
 
-package com.example.android.todoapp.data
+package com.example.android.todoapp.data.common
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
