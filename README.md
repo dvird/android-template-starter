@@ -130,12 +130,7 @@ todoapp/
 
 ```
 
-- **app/**: Contains the main application code, including different product flavors.
-- **data/**: Manages data sources and repositories.
-- **domain/**: Defines business models and use cases.
-- **presentation/**: Handles UI components and ViewModels.
-- **di/**: Contains dependency injection modules.
-- **tests/**: Organizes various testing layers.
+
 
 ## Testing
 
