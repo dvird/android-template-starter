@@ -1,4 +1,3 @@
-![Header Screenshot](screenshots/HEADER.png)
 
 # Android Architecture Template Starter
 
