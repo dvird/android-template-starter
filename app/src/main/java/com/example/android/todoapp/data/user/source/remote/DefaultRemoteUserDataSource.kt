@@ -1,23 +1,20 @@
-
-
 package com.example.android.todoapp.data.user.source.remote
 
-import com.example.android.todoapp.data.user.source.local.LocalUser
-import kotlinx.coroutines.sync.Mutex
+import com.example.android.todoapp.data.user.User
+import com.example.android.todoapp.data.user.source.remote.network.UserApiService
+import com.example.android.todoapp.data.user.source.toExternal
+import com.example.android.todoapp.data.user.source.toNetwork
 import javax.inject.Inject
 
-class DefaultRemoteUserDataSource @Inject constructor() : RemoteUserDataSource {
+class DefaultRemoteUserDataSource @Inject constructor(
+    private val userApiService: UserApiService
+) : RemoteUserDataSource {
 
-    // A mutex is used to ensure that reads and writes are thread-safe.
-    private val accessMutex = Mutex()
-
-    override suspend fun save(localUser: LocalUser) {
-        TODO("Not yet implemented")
+    override suspend fun save(user: User) {
+        userApiService.updateUser(user.id, user.toNetwork())
     }
 
-    override suspend fun get(): LocalUser {
-        TODO("Not yet implemented")
+    override suspend fun get(): User {
+        return userApiService.getUserDetails("").toExternal()
     }
 }
-
-private const val SERVICE_LATENCY_IN_MILLIS = 2000L

@@ -100,18 +100,19 @@ android {
  */
 dependencies {
 
-    // App dependencies
     implementation(libs.androidx.annotation)
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.timber)
-    implementation(libs.androidx.test.espresso.idling.resources)
 
-    // Architecture Components
+    //Kotlinx
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
+
+    //Startup
+    implementation(libs.androidx.startup)
+
+    //Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
-    implementation(libs.androidx.lifecycle.runtimeCompose)
-    implementation(libs.androidx.lifecycle.viewModelCompose)
 
     // Hilt
     implementation(libs.hilt.android.core)
@@ -120,22 +121,33 @@ dependencies {
 
     // Jetpack Compose
     val composeBom = platform(libs.androidx.compose.bom)
-
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.compiler)
     implementation(composeBom)
+    implementation(libs.androidx.compose.compiler)
     implementation(libs.androidx.compose.foundation.core)
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.animation)
     implementation(libs.androidx.compose.material.core)
     implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.lifecycle.viewModelCompose)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.accompanist.appcompat.theme)
     implementation(libs.accompanist.swiperefresh)
-    implementation(libs.androidx.startup)
+
+    //Logs
+    implementation(libs.timber)
+
+    //Images
+    implementation(libs.coil.kt)
+
+    //Network
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
 
 
     // ============================
@@ -169,6 +181,7 @@ dependencies {
     testImplementation(libs.androidx.test.espresso.core)
     testImplementation(libs.androidx.test.espresso.contrib)
     testImplementation(libs.androidx.test.espresso.intents)
+    implementation(libs.androidx.test.espresso.idling.resources)
     testImplementation(libs.google.truth)
     testImplementation(libs.androidx.compose.ui.test.junit)
 

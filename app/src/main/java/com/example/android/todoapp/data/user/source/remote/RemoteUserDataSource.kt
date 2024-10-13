@@ -1,5 +1,6 @@
 package com.example.android.todoapp.data.user.source.remote
 
+import com.example.android.todoapp.data.user.User
 import com.example.android.todoapp.data.user.source.local.LocalUser
 
 /**
@@ -7,7 +8,7 @@ import com.example.android.todoapp.data.user.source.local.LocalUser
  *
  */
 interface RemoteUserDataSource {
-    suspend fun save(localUser: LocalUser)
+    suspend fun save(user: User)
 
-    suspend fun get(): LocalUser
+    suspend fun get(): User
 }

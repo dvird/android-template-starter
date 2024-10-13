@@ -16,5 +16,4 @@ interface UserRepository {
     suspend fun refreshUser()
 
     suspend fun clear()
-
 }
